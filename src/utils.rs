@@ -1,7 +1,7 @@
 use scraper::{Html, Selector};
 use crate::models::*;
 use tiktoken_rs::p50k_base;
-use tokio::task; // Import task module from tokio
+use tokio::task;
 
 pub async fn process_data(data: &LeverJobListingResponse) -> FieldSizes {
     let mut combined_text = String::new();
@@ -39,7 +39,7 @@ pub async fn process_data(data: &LeverJobListingResponse) -> FieldSizes {
 
     FieldSizes {
         total_size: cleaned_combined_text.len(),
-        total_token_count: tokens.len()
+        total_token_count: tokens.len(),
     }
 }
 
@@ -62,7 +62,7 @@ pub fn calculate_statistics(lengths: &[usize]) -> Statistics {
 
 fn calculate_median(lengths: &[usize]) -> usize {
     if lengths.is_empty() {
-        return 0; // or some other default value or error handling
+        return 0;
     }
 
     let mut sorted = lengths.to_vec();
@@ -70,10 +70,8 @@ fn calculate_median(lengths: &[usize]) -> usize {
 
     let mid = sorted.len() / 2;
     if sorted.len() % 2 == 0 {
-        // If even number of elements, return the average of the two middle elements
         (sorted[mid - 1] + sorted[mid]) / 2
     } else {
-        // If odd, return the middle element
         sorted[mid]
     }
 }

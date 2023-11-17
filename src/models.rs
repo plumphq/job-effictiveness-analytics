@@ -15,7 +15,6 @@ pub struct LeverJobListingResponse {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct LeverCategories {
-    // optional
     pub commitment: Option<String>,
     pub department: Option<String>,
     pub location: Option<String>,

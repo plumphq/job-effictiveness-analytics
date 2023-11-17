@@ -1,10 +1,9 @@
+use futures::future;
 use reqwest;
 use serde::{Deserialize, Serialize};
 
 use crate::api::fetch_data_from_multiple_apis;
-use crate::models::FieldSizes;
 use crate::utils::*;
-use futures::future; // Import future module
 
 mod models;
 mod api;
